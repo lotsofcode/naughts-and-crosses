@@ -202,13 +202,21 @@
 			for (c in a) {
 				console.log("a[c]:"+a[c])
 				console.log("b[c]:"+b[c])
-				if (a[c] == b[c]) {
+				if (inArray(a[c], b)) {
 					++matches
 				}	
 			}
 			// console.log("matches:"+matches)
 			// console.log("a.length:"+a.length)
 			return matches == a.length;
+		}
+
+		function inArray(needle, haystack) {
+		    var length = haystack.length;
+		    for(var i = 0; i < length; i++) {
+		        if(haystack[i] == needle) return true;
+		    }
+		    return false;
 		}
 
 		function sortNumber(a,b) {
