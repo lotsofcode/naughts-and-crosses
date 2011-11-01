@@ -83,7 +83,6 @@
 			// no more goes remaining
 			if ( turnsRemaining == 0 ) return notifyPlayer("Game over, start again.");
 
-
 			if ( this.childNodes[0].innerHTML === "" ) {
 
 				this.childNodes[0].innerHTML = players[currentPlayer]
@@ -101,7 +100,7 @@
 				}
 
 				if ( --turnsRemaining == 0 ) {
-					return notifyPlayer("Game over");
+					return notifyPlayer("Game over, no winner");
 				}
 
 				return notifyPlayer("Player " + players[getOtherPlayer(currentPlayer)] + " turn.");
