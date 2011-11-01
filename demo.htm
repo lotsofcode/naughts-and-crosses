@@ -96,8 +96,6 @@
 
 				theWinner = checkForWinningPlayer();
 
-				// console.log(theWinner)
-
 				if ( theWinner !== false ) {
 					return notifyPlayer("Game over, "+players[theWinner]+" won.");
 				}
@@ -151,48 +149,17 @@
 		}
 
 		function checkForWinningPlayer() {
-
 			var winningPlayer = false;
-
 			for (i = 0; i <= 1; i++) {
-				console.log("Iteration: " + i)
 				var playerAnswers = getAnswers(i).sort(sortNumber);
-				console.log("playerAnswers:"+playerAnswers)
 				for (answer in answerMap) {
-					console.log("Answer:"+answer)
 					if (playerAnswers && compareCurrentAnswers(answerMap[answer], playerAnswers)) {
 						winningPlayer = i;
 					}
 				}
 			}
-
-			console.log("winningPlayer:"+winningPlayer);
-
 			return winningPlayer;
-
-			// x = getAnswers(0) || [];
-			// o = getAnswers(1) || [];
-
-			// x = x.sort();
-			// o = o.sort();
-
-			// winner = false;
-			// for (answer in answerMap) {
-			// 	if (x && matchedResults(answerMap[answer], x)) {
-			// 		winner = 0;	
-			// 	}
-			// 	if (o && matchedResults(answerMap[answer], o)) {
-			// 		winner = 1;	
-			// 	}
-			// }
-
-			// return winner;
 		}
-
-		/*
-			a = correct answers
-			b = currently selected answers
-		*/
 
 		function compareCurrentAnswers(a, b) {
 			if (a == undefined || b == undefined) {
@@ -200,14 +167,10 @@
 			}
 			var matches = 0;
 			for (c in a) {
-				console.log("a[c]:"+a[c])
-				console.log("b[c]:"+b[c])
 				if (inArray(a[c], b)) {
 					++matches
 				}	
 			}
-			// console.log("matches:"+matches)
-			// console.log("a.length:"+a.length)
 			return matches == a.length;
 		}
 
