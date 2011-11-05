@@ -70,6 +70,23 @@
 
 		notifyPlayer("Player " + players[currentPlayer || firstPlayer] + " turn.");
 
+		$('#reset').live('click',function(e) {
+			e.preventDefault();
+			
+			firstPlayer = Math.round(Math.random());
+			currentPlayer = null;
+			turnsRemaining = 9;
+			theWinner = false;
+			answers = [];
+			matcher = [];
+			
+			$('.nac-item').each(function() {
+				this.childNodes[0].innerHTML = "";
+			});
+			
+			notifyPlayer("Player " + players[firstPlayer] + " turn.");
+		});
+		
 		$('.nac-item').click(function(e) {
 			
 			currentPlayer = getNextPlayer(); // get the next player
@@ -78,10 +95,10 @@
 			answer = matcher[1]
 
 			// we have a winner
-			if ( theWinner !== false ) return notifyPlayer("Game over, "+players[theWinner]+" won.");
+			if ( theWinner !== false ) return notifyPlayer("Game over, "+players[theWinner]+" won, <a id='reset' href='#'>start again</a>");
 
 			// no more goes remaining
-			if ( turnsRemaining == 0 ) return notifyPlayer("Game over, start again.");
+			if ( turnsRemaining == 0 ) return notifyPlayer("Game over, <a id='reset' href='#'>start again</a>.");
 
 			if ( this.childNodes[0].innerHTML === "" ) {
 
@@ -96,11 +113,11 @@
 				theWinner = checkForWinningPlayer();
 
 				if ( theWinner !== false ) {
-					return notifyPlayer("Game over, "+players[theWinner]+" won.");
+					return notifyPlayer("Game over, "+players[theWinner]+" won , <a id='reset' href='#'>start again</a>");
 				}
 
 				if ( --turnsRemaining == 0 ) {
-					return notifyPlayer("Game over, no winner");
+					return notifyPlayer("Game over, no winner, <a id='reset' href='#'>start again</a>");
 				}
 
 				return notifyPlayer("Player " + players[getOtherPlayer(currentPlayer)] + " turn.");
