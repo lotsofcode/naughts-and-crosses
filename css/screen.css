@@ -1,0 +1,29 @@
+#nac-container {
+	width: 360px;
+	margin: 80px auto;	
+}
+
+#nac-notices {
+	background: #eee;
+	padding: 20px;
+	border: 1px solid #ccc;
+	position: absolute;
+	right: 50px;
+	width: 300px;
+}
+
+.nac-item {
+	width: 98px;
+	height: 98px;
+	margin: 10px;
+	float: left;
+	text-align: center;
+	background: #eee;
+	border: 1px solid #ccc;
+}
+.nac-item span {
+	padding-top: 30px;
+	height: 100%;
+	display: block;
+	font-size: 30px;
+}
